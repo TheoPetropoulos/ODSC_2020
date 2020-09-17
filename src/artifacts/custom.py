@@ -1,3 +1,8 @@
+g_code_dir = None
+def init(code_dir):
+    global g_code_dir
+    g_code_dir = code_dir
+
 def transform(data, model):
     """
     Note: This hook may not have to be implemented for your model.
@@ -14,7 +19,8 @@ def transform(data, model):
     """
     # Execute any steps you need to do before scoring
 
-    pipeline = joblib.load('preprocessing_pipeline_18-09-2020.pkl')
+    pipeline_path = 'preprocessing_pipeline_18-09-2020.pkl'
+    pipeline = joblib.load(os.path.join(g_code_dir, pipeline_path))
     data = pipeline.transform(data)
     return data
 

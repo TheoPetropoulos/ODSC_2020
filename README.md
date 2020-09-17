@@ -1,2 +1,2 @@
 # ODSC_2020_MLOps
-Code for custom inference model
+Custom Keras example on how to create a custom model and use DataRobot's MLOps to deploy it.

@@ -14,12 +14,11 @@ def transform(data, model):
     """
     # Execute any steps you need to do before scoring
 
-    pipeline = joblib.load('artifacts/preprocessing_pipeline_18-09-2020.pkl')
+    pipeline = joblib.load('preprocessing_pipeline_18-09-2020.pkl')
     data = pipeline.transform(data)
     return data
 
-
-def load_model():
-    model = keras.models.load_model('artifacts/classifier_18-09-2020.h5')
-
+def load_model(code_dir):
+    model_path = 'classifier_18-09-2020.h5'
+    model = keras.models.load_model(os.path.join(code_dir, model_path))
     return model

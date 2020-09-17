@@ -1,1 +1,2 @@
 joblib==0.16.0
+tensorflow == 2.3.0

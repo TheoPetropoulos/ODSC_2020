@@ -2,6 +2,7 @@ g_code_dir = None
 from tensorflow import keras
 import joblib
 import os
+import pandas as pd
 
 def init(code_dir):
     global g_code_dir
@@ -32,3 +33,12 @@ def load_model(code_dir):
     model_path = 'classifier_18-09-2020.h5'
     model = keras.models.load_model(os.path.join(code_dir, model_path))
     return model
+
+def score(data, model, **kwargs):
+    results = model.predict_proba(data)
+
+    #Create two columns with probability results
+    predictions = pd.DataFrame({'1': results[:, 0]})
+    predictions['0'] = 1 - predictions['1']
+
+    return predictions

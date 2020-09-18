@@ -38,7 +38,7 @@ def score(data, model, **kwargs):
     results = model.predict_proba(data)
 
     #Create two columns with probability results
-    predictions = pd.DataFrame({'1': results[:, 0]})
-    predictions['0'] = 1 - predictions['1']
+    predictions = pd.DataFrame({'yes': results[:, 0]})
+    predictions['no'] = 1 - predictions['yes']
 
     return predictions
